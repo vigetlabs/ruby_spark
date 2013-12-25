@@ -1,9 +1,9 @@
 module RubySpark
-  class Client
+  class Core
     class ApiKeyNotDefinedError < StandardError; end
 
     def initialize(core_id)
-      raise ApiKeyNotDefinedError if ::RubySpark.api_key.nil?
+      raise ApiKeyNotDefinedError if RubySpark.api_key.nil?
 
       @core_id = core_id
     end
@@ -22,7 +22,7 @@ module RubySpark
     end
 
     def access_params
-      {:access_token => ::RubySpark.api_key}
+      {:access_token => RubySpark.api_key}
     end
 
   end

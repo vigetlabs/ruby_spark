@@ -1,7 +1,7 @@
 require 'httparty'
 
 require 'ruby_spark/version'
-require 'ruby_spark/client'
+require 'ruby_spark/core'
 
 module RubySpark
 
