@@ -2,12 +2,13 @@ require 'httparty'
 
 require 'ruby_spark/version'
 require 'ruby_spark/core'
+require 'ruby_spark/client'
 
 module RubySpark
   class ApiKeyNotDefinedError < StandardError; end
 
   class << self
-    attr_accessor :api_key
+    attr_accessor :auth_token
 
     def configuration
       yield self

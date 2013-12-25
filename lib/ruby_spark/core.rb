@@ -2,26 +2,19 @@ module RubySpark
   class Core
 
     def initialize(core_id)
-      raise RubySpark::ApiKeyNotDefinedError if RubySpark.api_key.nil?
+      raise RubySpark::ApiKeyNotDefinedError if RubySpark.auth_token.nil?
 
       @core_id = core_id
     end
 
     def digital_write(pin, message)
-      url    = base_url + "/digitalwrite"
-      params = access_params.merge(:params => "D#{pin},#{message}")
-
-      HTTParty.post(url, :body => params)
+      client.post('digitalwrite', "D#{pin},#{message}")
     end
 
     private
 
-    def base_url
-      "https://api.spark.io/v1/devices/#{@core_id}"
-    end
-
-    def access_params
-      {:access_token => RubySpark.api_key}
+    def client
+      @client ||= Client.new
     end
 
   end
