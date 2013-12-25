@@ -18,12 +18,33 @@ and install it with `bundle install`
 
 ## Usage
 
-TODO: Write usage instructions here
+Load:
+
+    require 'ruby_spark'
+
+Configure:
+
+    RubySpark.configuration do |config|
+      config.auth_token = "very_long_spark_api_auth_token"
+    end
+
+Instantiate.
+
+    core = RubySpark::Core.new("semi_long_core_device_id")
+
+Fire away:
+
+    core.digital_write(3, "HIGH")  #=> true or false
+    core.digital_read(5)           #=> "HIGH" or "LOW"
+
+    core.analog_write(3, 420)      #=> true or false
+    core.analog_read(5)            #=> 0 to 4096
+
+
+Clearly you'll need to replace "very_long_spark_api_auth_token" and "semi_long_core_device_id" with real values.
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Happily accepting contributions. To contribute, fork, develop, add some specs, and pull request.
+
+Note about the specs. All API requests make use of the [VCR](https://github.com/vcr/vcr) gem. To contribute without exposing your Auth Token and Core ID, run the specs with your real authentication, and then find-and-replace your Auth Token and Core ID with fake values in the spec and any VCR cassettes.
