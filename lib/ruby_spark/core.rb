@@ -1,9 +1,8 @@
 module RubySpark
   class Core
-    class ApiKeyNotDefinedError < StandardError; end
 
     def initialize(core_id)
-      raise ApiKeyNotDefinedError if RubySpark.api_key.nil?
+      raise RubySpark::ApiKeyNotDefinedError if RubySpark.api_key.nil?
 
       @core_id = core_id
     end
