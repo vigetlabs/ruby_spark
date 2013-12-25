@@ -2,7 +2,6 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'ruby_spark/version'
-require 'ruby_spark/core'
 require 'ruby_spark/client'
 
 Gem::Specification.new do |spec|
@@ -15,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://github.com/efatsi/ruby_spark"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files`.split($/) + Dir['lib/*/*']
+  spec.files         = `git ls-files`.split($/)
   spec.test_files    = spec.files.grep(%r{^spec/})
 
   spec.add_development_dependency "bundler", "~> 1.3"
