@@ -2,7 +2,7 @@ module RubySpark
   class Core
 
     def initialize(core_id)
-      raise RubySpark::ApiKeyNotDefinedError if RubySpark.auth_token.nil?
+      raise RubySpark::AuthTokenNotDefinedError if RubySpark.auth_token.nil?
 
       @core_id = core_id
     end

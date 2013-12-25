@@ -5,7 +5,7 @@ require 'ruby_spark/core'
 require 'ruby_spark/client'
 
 module RubySpark
-  class ApiKeyNotDefinedError < StandardError; end
+  class AuthTokenNotDefinedError < StandardError; end
 
   class << self
     attr_accessor :auth_token
