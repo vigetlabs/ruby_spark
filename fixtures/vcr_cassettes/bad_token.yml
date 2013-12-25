@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.spark.io/v1/devices/good_core_id/digitalwrite
+    body:
+      encoding: UTF-8
+      string: access_token=bad_token&params=D7%2CHIGH
+    headers: {}
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 25 Dec 2013 06:15:59 GMT
+      Server:
+      - nginx/1.4.2
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '109'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "code": 400,
+          "error": "invalid_grant",
+          "error_description": "The access token provided is invalid."
+        }
+    http_version:
+  recorded_at: Wed, 25 Dec 2013 06:15:59 GMT
+recorded_with: VCR 2.5.0

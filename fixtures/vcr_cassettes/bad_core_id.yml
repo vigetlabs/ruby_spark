@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.spark.io/v1/devices/bad_core_id/digitalwrite
+    body:
+      encoding: UTF-8
+      string: access_token=good_auth_token&params=D7%2CHIGH
+    headers: {}
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 25 Dec 2013 06:18:27 GMT
+      Server:
+      - nginx/1.4.2
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '34'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "error": "Permission Denied"
+        }
+    http_version:
+  recorded_at: Wed, 25 Dec 2013 06:18:27 GMT
+recorded_with: VCR 2.5.0
