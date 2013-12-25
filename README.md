@@ -1,20 +1,20 @@
 # RubySpark
 
-TODO: Write a gem description
+Ruby Gem to make API requests to the [Spark Cloud API](http://docs.spark.io/#/api)
+
+##Obtaining a Spark Core Access Token and Core ID
+
+Assuming at this point you've followed the Spark Core's [Getting Started](http://docs.spark.io/#/start) guides and connected your Core with the Spark Cloud.
+
+Head over to the [Spark Build IDE](https://www.spark.io/build). In the Settings tab you can get your Access Token, and you can fetch your Device ID from the Cores tab. You'll need these both to authenticate your API calls, and the Device ID to direct them.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+To use this gem, install it with `gem install ruby_spark` or add this line to your Gemfile:
 
     gem 'ruby_spark'
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install ruby_spark
+and install it with `bundle install`
 
 ## Usage
 
