@@ -17,6 +17,16 @@ module RubySpark
       response.parsed_response["return_value"] == 1 ? "HIGH" : "LOW"
     end
 
+    def analog_write(pin, value)
+      response = post('analogwrite', "A#{pin},#{value}")
+      response.parsed_response["return_value"] == 1
+    end
+
+    def analog_read(pin)
+      response = post('analogread', "A#{pin}")
+      response.parsed_response["return_value"]
+    end
+
     private
 
     def post(action, params)
