@@ -24,6 +24,8 @@ Load:
 
 Configure:
 
+    # config/initializers/ruby_spark.rb
+
     RubySpark.configuration do |config|
       config.access_token = "very_long_spark_api_access_token"
     end
@@ -32,6 +34,10 @@ Instantiate.
 
     core = RubySpark::Core.new("semi_long_core_device_id")
 
+Alternitavely, you can pass your Access Token directly into your Core object and skip the configuration.
+
+    core = RubySpark::Core.new("semi_long_core_device_id", "very_long_spark_api_access_token")
+
 Fire away:
 
     core.digital_write(3, "HIGH")  #=> true or false
@@ -39,7 +45,6 @@ Fire away:
 
     core.analog_write(3, 420)      #=> true or false
     core.analog_read(5)            #=> 0 to 4096
-
 
 Clearly you'll need to replace "very_long_spark_api_access_token" and "semi_long_core_device_id" with real values.
 
