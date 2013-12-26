@@ -1,8 +1,8 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ruby_spark/version'
-require 'ruby_spark/core'
+require 'spark/version'
+require 'spark/core'
 
 Gem::Specification.new do |spec|
   spec.name          = "ruby_spark"

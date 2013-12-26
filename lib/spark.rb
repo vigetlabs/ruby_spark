@@ -1,9 +1,10 @@
 require 'httparty'
 
-require 'ruby_spark/version'
-require 'ruby_spark/core'
+require 'spark/version'
+require 'spark/core'
+require 'spark/tinker'
 
-module RubySpark
+module Spark
   class ConfigurationError < StandardError; end
 
   class << self

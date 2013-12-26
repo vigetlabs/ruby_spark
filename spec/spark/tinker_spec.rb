@@ -1,10 +1,10 @@
 require 'spec_helper'
 require 'pry'
 
-describe RubySpark::Core do
+describe Spark::Tinker do
 
   context "with Access Token set in config variable" do
-    before  { RubySpark.access_token = "good_access_token" }
+    before  { Spark.access_token = "good_access_token" }
     subject { described_class.new("good_core_id") }
 
     describe "#digital_write" do
@@ -15,12 +15,12 @@ describe RubySpark::Core do
       end
 
       it "returns the appropriate error when Access Token is bad" do
-        RubySpark.access_token = "bad_token"
+        Spark.access_token = "bad_token"
 
         VCR.use_cassette("bad_token") do
           expect {
             subject.digital_write(7, "HIGH")
-          }.to raise_error(RubySpark::Core::ApiError)
+          }.to raise_error(Spark::Core::ApiError)
         end
 
         VCR.use_cassette("bad_token") do
@@ -38,7 +38,7 @@ describe RubySpark::Core do
         VCR.use_cassette("bad_core_id") do
           expect {
             subject.digital_write(7, "HIGH")
-          }.to raise_error(RubySpark::Core::ApiError)
+          }.to raise_error(Spark::Core::ApiError)
         end
 
         VCR.use_cassette("bad_core_id") do
@@ -54,7 +54,7 @@ describe RubySpark::Core do
         VCR.use_cassette("spark_timeout") do
           expect {
             subject.digital_write(7, "HIGH")
-          }.to raise_error(RubySpark::Core::ApiError)
+          }.to raise_error(Spark::Core::ApiError)
         end
 
         VCR.use_cassette("spark_timeout") do
@@ -105,14 +105,14 @@ describe RubySpark::Core do
   end
 
   context "with no Access Token defined" do
-    before  { RubySpark.access_token = nil }
+    before  { Spark.access_token = nil }
     subject { described_class.new("good_core_id") }
 
     it "returns proper error if Access Token is not defined" do
       VCR.use_cassette("no_token") do
         expect {
           subject.digital_read(6)
-        }.to raise_error(RubySpark::ConfigurationError)
+        }.to raise_error(Spark::ConfigurationError)
       end
 
       VCR.use_cassette("no_token") do

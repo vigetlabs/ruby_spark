@@ -1,37 +1,31 @@
-module RubySpark
+module Spark
+
   class Core
     class ApiError < StandardError; end
 
-    def initialize(core_id, access_token = RubySpark.access_token)
-      raise RubySpark::ConfigurationError.new("Access Token not defined") if access_token.nil?
+    def initialize(core_id, access_token = Spark.access_token)
+      raise Spark::ConfigurationError.new("Access Token not defined") if access_token.nil?
 
       @access_token = access_token
       @core_id    = core_id
     end
 
-    def digital_write(pin, message)
-      response = post('digitalwrite', "D#{pin},#{message}")
+    def info
+      response = get("")
       handle(response) do
-        response["return_value"] == 1
+        response
       end
     end
 
-    def digital_read(pin)
-      response = post('digitalread', "D#{pin}")
+    def variable(variable_name)
+      response = get(variable_name)
       handle(response) do
-        response["return_value"] == 1 ? "HIGH" : "LOW"
+        response["TEMPORARY_allTypes"]["number"]
       end
     end
 
-    def analog_write(pin, value)
-      response = post('analogwrite', "A#{pin},#{value}")
-      handle(response) do
-        response["return_value"] == 1
-      end
-    end
-
-    def analog_read(pin)
-      response = post('analogread', "A#{pin}")
+    def function(function_name, arguments)
+      response = post(function_name, :params => arguments)
       handle(response) do
         response["return_value"]
       end
@@ -39,11 +33,18 @@ module RubySpark
 
     private
 
-    def post(action, params)
+    def post(action, params = {})
       url  = base_url + action
-      body = access_params.merge(:params => params)
+      body = access_params.merge(params)
 
       HTTParty.post(url, :body => body).parsed_response
+    end
+
+    def get(action, params = {})
+      url  = base_url + action
+      query = access_params.merge(params)
+
+      HTTParty.get(url, :query => query).parsed_response
     end
 
     def handle(response, &block)
@@ -70,4 +71,5 @@ module RubySpark
       {:access_token => @access_token}
     end
   end
+
 end
