@@ -2,10 +2,11 @@ module RubySpark
   class Core
     class ApiError < StandardError; end
 
-    def initialize(core_id)
-      raise RubySpark::AuthTokenNotDefinedError if RubySpark.auth_token.nil?
+    def initialize(core_id, auth_token = RubySpark.auth_token)
+      raise RubySpark::AuthTokenNotDefinedError if auth_token.nil?
 
-      @core_id = core_id
+      @auth_token = auth_token
+      @core_id    = core_id
     end
 
     def digital_write(pin, message)
@@ -57,7 +58,7 @@ module RubySpark
       response["error"].tap do |error|
         description = response["error_description"]
         error.concat(": #{description}") if description
-        error.concat(": You do not have access to that Core") if error == "Permission Denied"
+        error.concat(": Invalid Core ID") if error == "Permission Denied"
       end
     end
 
@@ -66,7 +67,7 @@ module RubySpark
     end
 
     def access_params
-      {:access_token => RubySpark.auth_token}
+      {:access_token => @auth_token}
     end
   end
 end
