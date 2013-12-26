@@ -4,10 +4,10 @@ require 'ruby_spark/version'
 require 'ruby_spark/core'
 
 module RubySpark
-  class AuthTokenNotDefinedError < StandardError; end
+  class ConfigurationError < StandardError; end
 
   class << self
-    attr_accessor :auth_token
+    attr_accessor :access_token
 
     def configuration
       yield self

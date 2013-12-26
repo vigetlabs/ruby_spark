@@ -2,10 +2,10 @@ module RubySpark
   class Core
     class ApiError < StandardError; end
 
-    def initialize(core_id, auth_token = RubySpark.auth_token)
-      raise RubySpark::AuthTokenNotDefinedError if auth_token.nil?
+    def initialize(core_id, access_token = RubySpark.access_token)
+      raise RubySpark::ConfigurationError.new("Access Token not defined") if access_token.nil?
 
-      @auth_token = auth_token
+      @access_token = access_token
       @core_id    = core_id
     end
 
@@ -67,7 +67,7 @@ module RubySpark
     end
 
     def access_params
-      {:access_token => @auth_token}
+      {:access_token => @access_token}
     end
   end
 end

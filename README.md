@@ -25,7 +25,7 @@ Load:
 Configure:
 
     RubySpark.configuration do |config|
-      config.auth_token = "very_long_spark_api_auth_token"
+      config.access_token = "very_long_spark_api_access_token"
     end
 
 Instantiate.
@@ -41,10 +41,10 @@ Fire away:
     core.analog_read(5)            #=> 0 to 4096
 
 
-Clearly you'll need to replace "very_long_spark_api_auth_token" and "semi_long_core_device_id" with real values.
+Clearly you'll need to replace "very_long_spark_api_access_token" and "semi_long_core_device_id" with real values.
 
 ## Contributing
 
 Happily accepting contributions. To contribute, fork, develop, add some specs, and pull request.
 
-Note about the specs. All API requests make use of the [VCR](https://github.com/vcr/vcr) gem. To contribute without exposing your Auth Token and Core ID, run the specs with your real authentication, and then find-and-replace your Auth Token and Core ID with fake values in the spec and any VCR cassettes.
+Note about the specs. All API requests make use of the [VCR](https://github.com/vcr/vcr) gem. To contribute without exposing your Access Token and Core ID, run the specs with your real authentication, and then find-and-replace your Access Token and Core ID with fake values in the spec and any VCR cassettes.

@@ -3,20 +3,19 @@ require 'pry'
 
 describe RubySpark::Core do
 
-  context "with Auth Token set in config variable" do
-    before { RubySpark.auth_token = "good_auth_token" }
-
+  context "with Access Token set in config variable" do
+    before  { RubySpark.access_token = "good_access_token" }
     subject { described_class.new("good_core_id") }
 
     describe "#digital_write" do
-      it "succeeds when Auth Token and Core ID are correct" do
+      it "succeeds when Access Token and Core ID are correct" do
         VCR.use_cassette("digital_write") do
           subject.digital_write(7, "HIGH").should == true
         end
       end
 
-      it "returns the appropriate error when Auth Token is bad" do
-        RubySpark.auth_token = "bad_token"
+      it "returns the appropriate error when Access Token is bad" do
+        RubySpark.access_token = "bad_token"
 
         VCR.use_cassette("bad_token") do
           expect {
@@ -69,7 +68,7 @@ describe RubySpark::Core do
     end
 
     describe "#digital_read" do
-      it "succeeds when Auth Token and Core ID are correct" do
+      it "succeeds when Access Token and Core ID are correct" do
         VCR.use_cassette("digital_read") do
           subject.digital_read(6).should == "HIGH"
         end
@@ -77,7 +76,7 @@ describe RubySpark::Core do
     end
 
     describe "#analog_write" do
-      it "succeeds when Auth Token and Core ID are correct" do
+      it "succeeds when Access Token and Core ID are correct" do
         VCR.use_cassette("analog_write") do
           subject.analog_write(7, 130).should == true
         end
@@ -85,7 +84,7 @@ describe RubySpark::Core do
     end
 
     describe "#analog_read" do
-      it "succeeds when Auth Token and Core ID are correct" do
+      it "succeeds when Access Token and Core ID are correct" do
         VCR.use_cassette("analog_read") do
           subject.analog_read(6).should == 2399
         end
@@ -93,13 +92,34 @@ describe RubySpark::Core do
     end
   end
 
-  context "with Auth Token passed into Core" do
-    subject { described_class.new("good_core_id", "good_auth_token") }
+  context "with Access Token passed into Core" do
+    subject { described_class.new("good_core_id", "good_access_token") }
 
     describe "#digital_read" do
-      it "succeeds when Auth Token and Core ID are correct" do
+      it "succeeds when Access Token and Core ID are correct" do
         VCR.use_cassette("digital_write") do
           subject.digital_write(7, "HIGH").should == true
+        end
+      end
+    end
+  end
+
+  context "with no Access Token defined" do
+    before  { RubySpark.access_token = nil }
+    subject { described_class.new("good_core_id") }
+
+    it "returns proper error if Access Token is not defined" do
+      VCR.use_cassette("no_token") do
+        expect {
+          subject.digital_read(6)
+        }.to raise_error(RubySpark::ConfigurationError)
+      end
+
+      VCR.use_cassette("no_token") do
+        begin
+          subject.digital_read(6)
+        rescue => e
+          e.message.should == "Access Token not defined"
         end
       end
     end

@@ -2,40 +2,38 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.spark.io/v1/devices/good_core_id/analogwrite
+    uri: https://api.spark.io/v1/devices/good_core_id/digitalread
     body:
       encoding: UTF-8
-      string: access_token=good_auth_token&params=A7%2C130
+      string: access_token=good_access_token&params=D6
     headers: {}
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
     headers:
       Access-Control-Allow-Origin:
       - '*'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Wed, 25 Dec 2013 06:12:18 GMT
+      - Thu, 26 Dec 2013 17:04:34 GMT
       Server:
       - nginx/1.4.2
       X-Powered-By:
       - Express
       Content-Length:
-      - '124'
+      - '109'
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
       string: |-
         {
-          "id": "good_core_id",
-          "name": "First Core",
-          "last_app": null,
-          "connected": true,
-          "return_value": 1
+          "code": 400,
+          "error": "invalid_grant",
+          "error_description": "The access token provided is invalid."
         }
-    http_version:
-  recorded_at: Wed, 25 Dec 2013 06:12:18 GMT
+    http_version: 
+  recorded_at: Thu, 26 Dec 2013 17:04:34 GMT
 recorded_with: VCR 2.5.0
