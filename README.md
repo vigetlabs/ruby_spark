@@ -2,7 +2,7 @@
 
 Ruby Gem to make API requests to the [Spark Cloud API](http://docs.spark.io/#/api)
 
-##Obtaining a Spark Core Access Token and Core ID
+## Obtaining a Spark Core Access Token and Core ID
 
 Assuming at this point you've followed the Spark Core's [Getting Started](http://docs.spark.io/#/start) guides and connected your Core with the Spark Cloud.
 
@@ -30,15 +30,32 @@ Configure:
       config.access_token = "very_long_spark_api_access_token"
     end
 
-Instantiate.
+### Core API
+
+To instantiate a Core, you need to pass it's `device_id`. If you have your `access_token` setup ahead of time using the `config.access_token` then the second argument is optional.
 
     core = RubySpark::Core.new("semi_long_core_device_id")
-
-Alternitavely, you can pass your Access Token directly into your Core object and skip the configuration.
-
+    # or
     core = RubySpark::Core.new("semi_long_core_device_id", "very_long_spark_api_access_token")
 
 Fire away:
+
+    core.info                        #=> { info hash }
+
+    core.variable("something")       #=> number (for now)
+    core.function("foo", "argument") #=> number
+
+### Tinker API
+
+The tinker class provides `digital_read`, `digital_write`, `analog_read`, and `analog_write` for the default spark core code. This is the same interface as the tinker app.
+
+    core = RubySpark::Tinker.new("semi_long_core_device_id")
+    # or
+    core = RubySpark::Tinker.new("semi_long_core_device_id", "very_long_spark_api_access_token")
+
+Fire away:
+
+    core.info                      #=> { info hash }
 
     core.digital_write(3, "HIGH")  #=> true or false
     core.digital_read(5)           #=> "HIGH" or "LOW"
