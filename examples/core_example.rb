@@ -1,7 +1,7 @@
 require "bundler/setup"
-require "spark"
+require "ruby_spark"
 
-core = Spark::Core.new(ARGV[0], ARGV[1])
+core = RubySpark::Core.new(ARGV[0], ARGV[1])
 
 p core.info
 p core.function("set", "1")

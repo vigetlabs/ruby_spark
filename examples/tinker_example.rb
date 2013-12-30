@@ -1,7 +1,7 @@
 require "bundler/setup"
-require "spark"
+require "ruby_spark"
 
-core = Spark::Tinker.new(ARGV[0], ARGV[1])
+core = RubySpark::Tinker.new(ARGV[0], ARGV[1])
 
 p core.info
 

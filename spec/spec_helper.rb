@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'vcr'
 
-require 'spark' # and any other gems you need
+require 'ruby_spark' # and any other gems you need
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'

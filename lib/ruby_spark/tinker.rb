@@ -1,4 +1,4 @@
-module Spark
+module RubySpark
 
   class Tinker < Core
     def digital_write(pin, message)
