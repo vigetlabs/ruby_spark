@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.spark.io/v1/devices/good_core_id/temperature?access_token=good_access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 20 Feb 2014 21:44:49 GMT
+      Server:
+      - nginx/1.4.2
+      X-Powered-By:
+      - Express
+      Content-Length:
+      - '218'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! "{\n  \"cmd\": \"VarReturn\",\n  \"name\": \"temperature\",\n  \"result\":
+        70,\n  \"coreInfo\": {\n    \"last_app\": \"\",\n    \"last_heard\": \"2014-02-20T21:44:49.566Z\",\n
+        \   \"connected\": true,\n    \"deviceID\": \"good_core_id\"\n
+        \ }\n}"
+    http_version:
+  recorded_at: Thu, 20 Feb 2014 21:44:49 GMT
+recorded_with: VCR 2.5.0

@@ -1,34 +1,35 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://api.spark.io/v1/devices/bad_core_id/?access_token=good_access_token
+    method: post
+    uri: https://api.spark.io/v1/devices/good_core_id/readTemp
     body:
       encoding: US-ASCII
-      string: ''
+      string: access_token=good_access_token&params=outside
     headers: {}
   response:
     status:
-      code: 403
-      message: Forbidden
+      code: 200
+      message: OK
     headers:
       Access-Control-Allow-Origin:
       - ! '*'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 20 Feb 2014 21:50:42 GMT
+      - Thu, 20 Feb 2014 21:45:09 GMT
       Server:
       - nginx/1.4.2
       X-Powered-By:
       - Express
       Content-Length:
-      - '34'
+      - '121'
       Connection:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! "{\n  \"error\": \"Permission Denied\"\n}"
+      string: ! "{\n  \"id\": \"good_core_id\",\n  \"name\": \"chippy\",\n
+        \ \"last_app\": null,\n  \"connected\": true,\n  \"return_value\": 72\n}"
     http_version:
-  recorded_at: Thu, 20 Feb 2014 21:50:42 GMT
+  recorded_at: Thu, 20 Feb 2014 21:45:09 GMT
 recorded_with: VCR 2.5.0
