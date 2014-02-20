@@ -20,7 +20,7 @@ module RubySpark
     def variable(variable_name)
       response = get(variable_name)
       handle(response) do
-        response["TEMPORARY_allTypes"]["number"]
+        response["result"]
       end
     end
 
