@@ -72,7 +72,7 @@ module RubySpark
     end
 
     def timeout
-      RubySpark.timeout || 30.seconds
+      RubySpark.timeout
     end
   end
 
