@@ -37,14 +37,14 @@ module RubySpark
       url  = base_url + action
       body = access_params.merge(params)
 
-      HTTParty.post(url, :body => body).parsed_response
+      HTTParty.post(url, :body => body, :timeout => timeout).parsed_response
     end
 
     def get(action, params = {})
       url  = base_url + action
       query = access_params.merge(params)
 
-      HTTParty.get(url, :query => query).parsed_response
+      HTTParty.get(url, :query => query, :timeout => timeout).parsed_response
     end
 
     def handle(response, &block)
@@ -69,6 +69,10 @@ module RubySpark
 
     def access_params
       {:access_token => @access_token}
+    end
+
+    def timeout
+      RubySpark.timeout || 30.seconds
     end
   end
 

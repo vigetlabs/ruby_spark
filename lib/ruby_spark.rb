@@ -8,11 +8,10 @@ module RubySpark
   class ConfigurationError < StandardError; end
 
   class << self
-    attr_accessor :access_token
+    attr_accessor :access_token, :timeout
 
     def configuration
       yield self
     end
   end
-
 end

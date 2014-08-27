@@ -33,6 +33,7 @@ Configure:
 
 RubySpark.configuration do |config|
   config.access_token = "spark_api_access_token"
+  config.timeout      = 10.seconds # defaults to 30 seconds
 end
 ```
 
