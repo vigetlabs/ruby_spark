@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.spark.io/v1/devices/good_core_id/digitalwrite
+    uri: https://api.particle.io/v1/devices/good_core_id/digitalwrite
     body:
       encoding: UTF-8
       string: access_token=good_access_token&params=D7%2CHIGH

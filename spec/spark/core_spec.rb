@@ -82,7 +82,7 @@ describe RubySpark::Core do
       end
     end
 
-    it "returns the appropriate error when the Spark API times out" do
+    it "returns the appropriate error when the Particle API times out" do
       RubySpark.access_token = "good_access_token"
       subject = described_class.new("good_core_id")
 

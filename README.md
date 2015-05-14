@@ -1,12 +1,12 @@
 # RubySpark
 
-Ruby Gem to make API requests to the [Spark Cloud API](http://docs.spark.io/#/api)
+Easily control you [Particle](http://particle.io) (formerly Spark) Device with Ruby.
 
-## Obtaining a Spark Core Access Token and Core ID
+## Obtaining a Particle Access Token and Core ID
 
-Assuming at this point you've followed the Spark Core's [Getting Started](http://docs.spark.io/#/start) guides and connected your Core with the Spark Cloud.
+Assuming at this point you've followed Particle's [Getting Started](http://docs.particle.io/#/start) guides and connected your Core with the Particle Cloud.
 
-Head over to the [Spark Build IDE](https://www.spark.io/build). In the Settings tab you can get your Access Token, and you can fetch your Device ID from the Cores tab. You'll need these both to authenticate your API calls, and the Device ID to direct them.
+Head over to the [Particle Build IDE](https://www.particle.io/build). In the Settings tab you can get your Access Token, and you can fetch your Device ID from the Cores tab. You'll need these both to authenticate your API calls, and the Device ID to direct them.
 
 ## Installation
 

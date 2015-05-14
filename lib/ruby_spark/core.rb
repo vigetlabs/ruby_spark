@@ -64,7 +64,7 @@ module RubySpark
     end
 
     def base_url
-      "https://api.spark.io/v1/devices/#{@core_id}/"
+      "https://api.particle.io/v1/devices/#{@core_id}/"
     end
 
     def access_params

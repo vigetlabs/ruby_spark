@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.spark.io/v1/devices/good_core_id/readTemp
+    uri: https://api.particle.io/v1/devices/good_core_id/readTemp
     body:
       encoding: US-ASCII
       string: access_token=good_access_token&params=outside

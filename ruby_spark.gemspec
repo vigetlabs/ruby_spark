@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.version       = RubySpark::VERSION
   spec.authors       = ["Eli Fatsi"]
   spec.email         = ["eli.fatsi@viget.com"]
-  spec.description   = "Ruby Gem to make API calls to the Spark Cloud"
-  spec.summary       = "Ruby Gem to make API calls to the Spark Cloud"
+  spec.description   = "Ruby Gem to make API calls to the Particle Cloud"
+  spec.summary       = "Ruby Gem to make API calls to the Particle Cloud"
   spec.homepage      = "http://github.com/efatsi/ruby_spark"
   spec.license       = "MIT"
 
