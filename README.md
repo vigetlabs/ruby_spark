@@ -2,11 +2,11 @@
 
 Easily control you [Particle](http://particle.io) (formerly Spark) Device with Ruby.
 
-## Obtaining a Particle Access Token and Core ID
+## Obtaining a Particle Access Token and Device ID
 
-Assuming at this point you've followed Particle's [Getting Started](http://docs.particle.io/#/start) guides and connected your Core with the Particle Cloud.
+Assuming at this point you've followed Particle's [Getting Started](http://docs.particle.io/#/start) guides and connected your Device with the Particle Cloud.
 
-Head over to the [Particle Build IDE](https://www.particle.io/build). In the Settings tab you can get your Access Token, and you can fetch your Device ID from the Cores tab. You'll need these both to authenticate your API calls, and the Device ID to direct them.
+Head over to the [Particle Build IDE](https://www.particle.io/build). In the Settings tab you can get your Access Token, and you can fetch your Device ID from the Devices tab. You'll need these both to authenticate your API calls, and the Device ID to direct them.
 
 ## Installation
 
@@ -37,46 +37,46 @@ RubySpark.configuration do |config|
 end
 ```
 
-### Core API
+### Device API
 
-To instantiate a Core, you need to pass it's `device_id`. If you have your `access_token` setup ahead of time using the `config.access_token` then the second argument is optional.
+To instantiate a Device, you need to pass it's `device_id`. If you have your `access_token` setup ahead of time using the `config.access_token` then the second argument is optional.
 
 ```ruby
-core = RubySpark::Core.new("core_device_id")
+device = RubySpark::Device.new("device_device_id")
 # or
-core = RubySpark::Core.new("core_device_id", "spark_api_access_token")
+device = RubySpark::Device.new("device_device_id", "spark_api_access_token")
 ```
 
 Fire away:
 
 ```ruby
-core.info                        #=> { info hash }
+device.info                        #=> { info hash }
 
-core.variable("something")       #=> number (for now)
-core.function("foo", "argument") #=> number
+device.variable("something")       #=> number (for now)
+device.function("foo", "argument") #=> number
 ```
 
 ### Tinker API
 
-The tinker class provides `digital_read`, `digital_write`, `analog_read`, and `analog_write` for the default spark core code. This is the same interface as the tinker app.
+The tinker class provides `digital_read`, `digital_write`, `analog_read`, and `analog_write` for the default spark device code. This is the same interface as the tinker app.
 
 ```ruby
-core = RubySpark::Tinker.new("core_device_id")
+device = RubySpark::Tinker.new("device_device_id")
 # or
-core = RubySpark::Tinker.new("core_device_id", "spark_api_access_token")
+device = RubySpark::Tinker.new("device_device_id", "spark_api_access_token")
 ```
 
 Fire away:
 
 ```ruby
-core.info                      #=> { info hash }
+device.info                      #=> { info hash }
 
-core.digital_write(3, "HIGH")  #=> true or false
-core.digital_read(5)           #=> "HIGH" or "LOW"
+device.digital_write(3, "HIGH")  #=> true or false
+device.digital_read(5)           #=> "HIGH" or "LOW"
 ```
 
 ## Contributing
 
 Happily accepting contributions. To contribute, fork, develop, add some specs, and pull request.
 
-Note about the specs. All API requests make use of the [VCR](https://github.com/vcr/vcr) gem. To contribute without exposing your Access Token and Core ID, run the specs with your real authentication, and then find-and-replace your Access Token and Core ID with fake values in the spec and any VCR cassettes.
+Note about the specs. All API requests make use of the [VCR](https://github.com/vcr/vcr) gem. To contribute without exposing your Access Token and Device ID, run the specs with your real authentication, and then find-and-replace your Access Token and Device ID with fake values in the spec and any VCR cassettes.

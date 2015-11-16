@@ -1,14 +1,14 @@
 require 'spec_helper'
 require 'pry'
 
-describe RubySpark::Core do
+describe RubySpark::Device do
 
   context "when things go right" do
     before  { RubySpark.access_token = "good_access_token" }
-    subject { described_class.new("good_core_id") }
+    subject { described_class.new("good_device_id") }
 
     describe "#info" do
-      it "succeeds when Access Token and Core ID are correct" do
+      it "succeeds when Access Token and Device ID are correct" do
         VCR.use_cassette("info") do
           info = subject.info
 
@@ -19,7 +19,7 @@ describe RubySpark::Core do
     end
 
     describe "#variable" do
-      it "succeeds when Access Token and Core ID are correct" do
+      it "succeeds when Access Token and Device ID are correct" do
         VCR.use_cassette("variable") do
           subject.variable("temperature").should == 70
         end
@@ -27,7 +27,7 @@ describe RubySpark::Core do
     end
 
     describe "#function" do
-      it "succeeds when Access Token and Core ID are correct" do
+      it "succeeds when Access Token and Device ID are correct" do
         VCR.use_cassette("function") do
           subject.function("readTemp", "outside").should == 72
         end
@@ -38,12 +38,12 @@ describe RubySpark::Core do
   context "when things go wrong" do
     it "returns the appropriate error when Access Token is bad" do
       RubySpark.access_token = "bad_token"
-      subject = described_class.new("good_core_id")
+      subject = described_class.new("good_device_id")
 
       VCR.use_cassette("bad_token") do
         expect {
           subject.info
-        }.to raise_error(RubySpark::Core::ApiError)
+        }.to raise_error(RubySpark::Device::ApiError)
       end
 
       VCR.use_cassette("bad_token") do
@@ -59,37 +59,37 @@ describe RubySpark::Core do
       RubySpark.access_token = nil
 
       expect {
-        subject = described_class.new("good_core_id")
+        subject = described_class.new("good_device_id")
       }.to raise_error(RubySpark::ConfigurationError)
     end
 
-    it "returns the appropriate error when Core ID is bad" do
+    it "returns the appropriate error when Device ID is bad" do
       RubySpark.access_token = "good_access_token"
-      subject = described_class.new("bad_core_id")
+      subject = described_class.new("bad_device_id")
 
-      VCR.use_cassette("bad_core_id") do
+      VCR.use_cassette("bad_device_id") do
         expect {
           subject.info
-        }.to raise_error(RubySpark::Core::ApiError)
+        }.to raise_error(RubySpark::Device::ApiError)
       end
 
-      VCR.use_cassette("bad_core_id") do
+      VCR.use_cassette("bad_device_id") do
         begin
           subject.info
         rescue => e
-          e.message.should == "Permission Denied: Invalid Core ID"
+          e.message.should == "Permission Denied: Invalid Device ID"
         end
       end
     end
 
     it "returns the appropriate error when the Particle API times out" do
       RubySpark.access_token = "good_access_token"
-      subject = described_class.new("good_core_id")
+      subject = described_class.new("good_device_id")
 
       VCR.use_cassette("spark_timeout") do
         expect {
           subject.info
-        }.to raise_error(RubySpark::Core::ApiError)
+        }.to raise_error(RubySpark::Device::ApiError)
       end
 
       VCR.use_cassette("spark_timeout") do

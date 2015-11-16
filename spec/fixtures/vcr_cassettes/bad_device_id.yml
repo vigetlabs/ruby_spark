@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.particle.io/v1/devices/bad_core_id/?access_token=good_access_token
+    uri: https://api.particle.io/v1/devices/bad_device_id/?access_token=good_access_token
     body:
       encoding: US-ASCII
       string: ''

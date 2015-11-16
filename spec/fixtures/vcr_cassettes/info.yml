@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.particle.io/v1/devices/good_core_id/?access_token=good_access_token
+    uri: https://api.particle.io/v1/devices/good_device_id/?access_token=good_access_token
     body:
       encoding: US-ASCII
       string: ''
@@ -28,7 +28,7 @@ http_interactions:
       - keep-alive
     body:
       encoding: US-ASCII
-      string: ! "{\n  \"id\": \"good_core_id\",\n  \"name\": \"chippy\",\n
+      string: ! "{\n  \"id\": \"good_device_id\",\n  \"name\": \"chippy\",\n
         \ \"variables\": {\n    \"temperature\": \"int32\"\n  },\n  \"functions\":
         [\n    \"readTemp\"\n  ]\n}"
     http_version:

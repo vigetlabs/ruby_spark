@@ -1,6 +1,6 @@
 module RubySpark
 
-  class Tinker < Core
+  class Tinker < Device
     def digital_write(pin, message)
       response = post('digitalwrite', :params => "D#{pin},#{message}")
       handle(response) do

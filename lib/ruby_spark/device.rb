@@ -1,13 +1,13 @@
 module RubySpark
 
-  class Core
+  class Device
     class ApiError < StandardError; end
 
-    def initialize(core_id, access_token = RubySpark.access_token)
+    def initialize(device_id, access_token = RubySpark.access_token)
       raise RubySpark::ConfigurationError.new("Access Token not defined") if access_token.nil?
 
       @access_token = access_token
-      @core_id    = core_id
+      @device_id    = device_id
     end
 
     def info
@@ -59,12 +59,12 @@ module RubySpark
       response["error"].tap do |error|
         description = response["error_description"]
         error.concat(": #{description}") if description
-        error.concat(": Invalid Core ID") if error == "Permission Denied"
+        error.concat(": Invalid Device ID") if error == "Permission Denied"
       end
     end
 
     def base_url
-      "https://api.particle.io/v1/devices/#{@core_id}/"
+      "https://api.particle.io/v1/devices/#{@device_id}/"
     end
 
     def access_params

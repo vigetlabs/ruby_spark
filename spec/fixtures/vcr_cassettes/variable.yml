@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.particle.io/v1/devices/good_core_id/temperature?access_token=good_access_token
+    uri: https://api.particle.io/v1/devices/good_device_id/temperature?access_token=good_access_token
     body:
       encoding: US-ASCII
       string: ''
@@ -29,8 +29,8 @@ http_interactions:
     body:
       encoding: US-ASCII
       string: ! "{\n  \"cmd\": \"VarReturn\",\n  \"name\": \"temperature\",\n  \"result\":
-        70,\n  \"coreInfo\": {\n    \"last_app\": \"\",\n    \"last_heard\": \"2014-02-20T21:44:49.566Z\",\n
-        \   \"connected\": true,\n    \"deviceID\": \"good_core_id\"\n
+        70,\n  \"deviceInfo\": {\n    \"last_app\": \"\",\n    \"last_heard\": \"2014-02-20T21:44:49.566Z\",\n
+        \   \"connected\": true,\n    \"deviceID\": \"good_device_id\"\n
         \ }\n}"
     http_version:
   recorded_at: Thu, 20 Feb 2014 21:44:49 GMT

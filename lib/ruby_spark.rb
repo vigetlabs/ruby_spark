@@ -1,7 +1,7 @@
 require 'httparty'
 
 require 'ruby_spark/version'
-require 'ruby_spark/core'
+require 'ruby_spark/device'
 require 'ruby_spark/tinker'
 require 'helpers/configuration'
 
