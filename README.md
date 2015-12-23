@@ -80,3 +80,11 @@ device.digital_read(5)           #=> "HIGH" or "LOW"
 Happily accepting contributions. To contribute, fork, develop, add some specs, and pull request.
 
 Note about the specs. All API requests make use of the [VCR](https://github.com/vcr/vcr) gem. To contribute without exposing your Access Token and Device ID, run the specs with your real authentication, and then find-and-replace your Access Token and Device ID with fake values in the spec and any VCR cassettes.
+
+***
+
+<a href="http://code.viget.com">
+  <img src="http://code.viget.com/github-banner.png" alt="Code At Viget">
+</a>
+
+Visit [code.viget.com](http://code.viget.com) to see more projects from [Viget.](https://viget.com)
